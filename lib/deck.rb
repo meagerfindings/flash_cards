@@ -18,4 +18,12 @@ class Deck
   def cards
     @cards
   end
+
+  def find_categories
+    categories = @cards.map do |card|
+      card. category
+    end
+
+    categories.uniq
+  end
 end
