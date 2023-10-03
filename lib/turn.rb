@@ -23,6 +23,6 @@ class Turn
   end
 
   def correct?
-    guess == @card.answer
+    guess == card.answer
   end
 end
