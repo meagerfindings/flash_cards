@@ -43,7 +43,7 @@ end
 
 def closing
   puts "****** Game over! ******"
-  puts "You had #{round.number_correct} guesses out of #{round.turns.count} for a total score of #{round.percent_correct}%"
+  puts "You had #{round.number_correct} guesses out of #{round.turns.count} for a total score of #{round.percent_correct.to_i}%"
 
   category_stats
 end
@@ -51,7 +51,7 @@ end
 def category_stats
   categories = deck.find_categories
   categories.each do |category|
-    puts "#{category} - #{round.percent_correct_by_category(category)}% correct"
+    puts "#{category} - #{round.percent_correct_by_category(category).to_i}% correct"
   end
 end
 
