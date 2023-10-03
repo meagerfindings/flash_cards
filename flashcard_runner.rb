@@ -25,18 +25,27 @@ def welcome
 "
 end
 
-def start_round
-  puts "This is card number 1 out of #{deck.count}."
-  puts "Question: #{round.current_card.question}"
-
-  take_a_turn
+def turn_number
+  round.turns.count + 1
 end
 
-def take_a_turn
+def take_turns
+  puts "This is card number #{turn_number} out of #{deck.count}."
+  puts "Question: #{round.current_card.question}"
+
   guess_input = gets.chomp
   round.take_turn(guess_input)
-  puts round.turns[0].feedback
+
+  puts round.turns.last.feedback
+
+  take_turns if turn_number <= deck.count
+end
+
+def closing
+  puts "****** Game over! ******"
+  puts "You had #{round.number_correct} guesses out of #{round.turns.count} for a total score of #{round.percent_correct}%"
 end
 
 welcome
-start_round
+take_turns
+closing
